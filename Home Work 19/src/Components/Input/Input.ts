@@ -1,10 +1,13 @@
 import "./style.css"
+import { props } from "../inputInterface"
+
 
 export class Input{
-    private readonly el : HTMLInputElement;
+    protected readonly el : HTMLInputElement;
 
-    constructor(){
+    constructor(props : props){
         this.el = document.createElement("input");
+        this.el.type = props.type;
     }
 
     render() : HTMLInputElement{
