@@ -9,4 +9,6 @@ const elementTypeParser = {
 };
 const formParser = new FormParse(json, elementTypeParser);
 
-formParser.build()
+formParser.build();
+
+document.body.appendChild(formParser.render())

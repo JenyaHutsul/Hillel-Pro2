@@ -3,16 +3,19 @@ interface PropsText {
     placeholder: string
 }
 
+interface TypeFieldParser {
+    render(json: PropsText): HTMLElement;
+}
 
-export class InputTextParser {
-    protected el: HTMLInputElement
+export class InputTextParser implements TypeFieldParser {
     constructor() {
-        this.el = document.createElement("input");
     }
 
     render(props: PropsText) {
-        this.el.type = props.type;
-        this.el.placeholder = props.placeholder;
-        return this.el;
+        const el = document.createElement("input")
+        el.type = props.type;
+        el.placeholder = props.placeholder;
+        return el;
     }
 }
+

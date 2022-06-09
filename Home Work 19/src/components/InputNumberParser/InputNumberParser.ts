@@ -3,12 +3,14 @@ interface InputNumberParserProps {
     minValue: string
     maxValue: string
 }
+interface TypeFieldParser {
+    render(json: InputNumberParserProps): HTMLElement;
+}
 
-
-export class InputNumberParser {
-    protected readonly el: HTMLInputElement;
+export class InputNumberParser implements TypeFieldParser{
+    el: HTMLInputElement;
     constructor() {
-        this.el = document.createElement("input");
+        this.el = document.createElement("input")
     }
 
     render(props: InputNumberParserProps) {

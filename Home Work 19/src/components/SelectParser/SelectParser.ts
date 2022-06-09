@@ -1,21 +1,18 @@
-//interface SelectParserProps {
-//    type: "select"
-//    options: Array<object>
-//}
+interface TypeFieldParser {
+    render(json: Options): HTMLElement;
+}
 
 interface Options {
     value: string
     displayName: string
 }
 
-export class SelectParser {
-    protected readonly el: HTMLSelectElement;
+export class SelectParser implements TypeFieldParser {
     protected options: any;
 
     constructor() {
-        this.el = document.createElement("select");
     }
-    createOptions(props:any) {
+    createOptions(props: any) {
         const options = props.options;
         const arr = options.map(((item: Options): HTMLOptionElement => {
             const el = document.createElement("option");
@@ -26,15 +23,15 @@ export class SelectParser {
         return arr;
     }
 
-    render(props:any):HTMLElement {
+    render(props: any): HTMLElement {
         const arrOfOptions = this.createOptions(props);
-
+        const el = document.createElement("select")
 
         arrOfOptions.forEach((element: any): void => {
-            this.el.appendChild(element)
+            el.appendChild(element)
         });
 
-        return this.el;
+        return el;
     }
 
 
